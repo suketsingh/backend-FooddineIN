@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mynotes.spring.data.mongodb.exception.ResourceNotFoundException;
-import com.mynotes.spring.data.mongodb.model.Candidate;
-import com.mynotes.spring.data.mongodb.repo.CandidateRepository;
+
 
 @RestController
 @RequestMapping("/candidate")

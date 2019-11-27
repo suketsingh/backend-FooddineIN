@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.mynotes.spring.data.mongodb.model.Candidate;
+
 
 public interface CandidateRepository extends MongoRepository<Candidate, String> {
 
