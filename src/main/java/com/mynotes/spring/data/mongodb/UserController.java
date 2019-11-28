@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RestController
@@ -47,8 +48,8 @@ public class UserController {
     public User update(@PathVariable String id, @RequestBody User updatedUser) {
         User user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
-        user.setName(updatedUser.getFirstName());
-        user.setName(updatedUser.getLastName());
+        user.setFirstName(updatedUser.getFirstName());
+        user.setLastName(updatedUser.getLastName());
         user.setEmail(updatedUser.getEmail());
         return userRepository.save(user);
     }
@@ -74,7 +75,7 @@ public class UserController {
     public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
         List<User> result = new ArrayList<>();
         
-        result = userRepository.findBygfirstName(firstName);
+        result = userRepository.findByfirstName(firstName);
         
         return result;
     }
