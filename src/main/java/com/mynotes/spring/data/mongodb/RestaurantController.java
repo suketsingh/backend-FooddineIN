@@ -17,72 +17,71 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/restaurant")
+public class RestaurantController {
 
     @Autowired
-    private UserRepository userRepository;
+    private RestaurantRepository restaurantRepository;
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public User add(@RequestBody User user) {
-        return userRepository.save(user);
+    public Restaurant add(@RequestBody Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
     }
 
     @GetMapping
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<Restaurant> getAll() {
+        return restaurantRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    public User getOne(@PathVariable String id) {
-        return userRepository.findById(id)
+    public Restaurant getOne(@PathVariable String id) {
+        return restaurantRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
 
     @PutMapping(value = "/{id}")
-    public User update(@PathVariable String id, @RequestBody User updatedUser) {
-        User user = userRepository.findById(id)
+    public Restaurant update(@PathVariable String id, @RequestBody Restaurant updatedRestaurant) {
+        Restaurant restaurant = restaurantRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
-        user.setFirstName(updatedUser.getFirstName());
-        user.setLastName(updatedUser.getLastName());
-        user.setEmail(updatedUser.getEmail());
-        return userRepository.save(user);
+        restaurant.setName(updatedRestaurant.getName());
+        restaurant.setContact(updatedRestaurant.getContact());
+        restaurant.setEmail(updatedRestaurant.getEmail());
+        return restaurantRepository.save(restaurant);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
-        User user = userRepository.findById(id)
+        Restaurant restaurant = restaurantRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
-        userRepository.delete(user);
+        restaurantRepository.delete(restaurant);
     }
 
     @GetMapping("/searchByEmail")
-    public User searchByEmail(@RequestParam(name = "email") String email) {
-        return userRepository.findByEmail(email)
+    public Restaurant searchByEmail(@RequestParam(name = "email") String email) {
+        return restaurantRepository.findByEmail(email)
             .orElseThrow(() -> new ResourceNotFoundException());
 
     }
     
 
     
-    @GetMapping("/searchByName")
-    public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
-        List<User> result = new ArrayList<>();
-        
-        result = userRepository.findByfirstName(firstName);
-        
-        return result;
-    }
+//    @GetMapping("/searchByName")
+//    public List<Restaurant> searchByName(@RequestParam(name = "name") String name) {
+//        List<Restaurant> result = new ArrayList<>();
+//        
+//        result = restaurantRepository.findByname(name);
+//        
+//        return result;
+//    }
     
     
     
-//    public User searchByName(User user) {
+//    public Restaurant searchByName(Restaurant restaurant) {
 //    	Query query = new Query();
 //    	query.addCriteria
 //       }
