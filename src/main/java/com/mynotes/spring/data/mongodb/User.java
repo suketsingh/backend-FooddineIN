@@ -4,16 +4,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "candidate")
-public class Candidate {
+@Document(collection = "user")
+public class User {
 
     @Id
     private String id;
-
-    private String name;
-
-    private double exp;
-
+    
+    
+    private String firstName;
+    
+    private String lastName;
+    
+    
+   
     @Indexed(unique = true)
     private String email;
 
@@ -24,21 +27,23 @@ public class Candidate {
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
+    
+    
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public double getExp() {
-        return exp;
+   
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setExp(double experiance) {
-        this.exp = experiance;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

@@ -19,63 +19,73 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/candidate")
-public class CandidateController {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
-    private CandidateRepository candidateRepository;
+    private UserRepository userRepository;
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Candidate add(@RequestBody Candidate candidate) {
-        return candidateRepository.save(candidate);
+    public User add(@RequestBody User user) {
+        return userRepository.save(user);
     }
 
     @GetMapping
-    public List<Candidate> getAll() {
-        return candidateRepository.findAll();
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    public Candidate getOne(@PathVariable String id) {
-        return candidateRepository.findById(id)
+    public User getOne(@PathVariable String id) {
+        return userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
 
     @PutMapping(value = "/{id}")
-    public Candidate update(@PathVariable String id, @RequestBody Candidate updatedCandidate) {
-        Candidate candidate = candidateRepository.findById(id)
+    public User update(@PathVariable String id, @RequestBody User updatedUser) {
+        User user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
-        candidate.setName(updatedCandidate.getName());
-        candidate.setExp(updatedCandidate.getExp());
-        candidate.setEmail(updatedCandidate.getEmail());
-        return candidateRepository.save(candidate);
+        user.setName(updatedUser.getFirstName());
+        user.setName(updatedUser.getLastName());
+        user.setEmail(updatedUser.getEmail());
+        return userRepository.save(user);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
-        Candidate candidate = candidateRepository.findById(id)
+        User user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
-        candidateRepository.delete(candidate);
+        userRepository.delete(user);
     }
 
     @GetMapping("/searchByEmail")
-    public Candidate searchByEmail(@RequestParam(name = "email") String email) {
-        return candidateRepository.findByEmail(email)
+    public User searchByEmail(@RequestParam(name = "email") String email) {
+        return userRepository.findByEmail(email)
             .orElseThrow(() -> new ResourceNotFoundException());
 
     }
+    
 
-    @GetMapping("/searchByExp")
-    public List<Candidate> searchByExp(@RequestParam(name = "expFrom") Double expFrom, @RequestParam(name = "expTo", required = false) Double expTo) {
-        List<Candidate> result = new ArrayList<>();
-        if (expTo != null) {
-            result = candidateRepository.findByExpBetween(expFrom, expTo);
-        } else {
-            result = candidateRepository.findByExpGreaterThanEqual(expFrom);
-        }
+    
+    @GetMapping("/searchByName")
+    public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
+        List<User> result = new ArrayList<>();
+        
+        result = userRepository.findBygfirstName(firstName);
+        
         return result;
     }
+    
+    
+    
+//    public User searchByName(User user) {
+//    	Query query = new Query();
+//    	query.addCriteria
+//       }
+      
+
+    
 
 }
