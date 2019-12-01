@@ -50,6 +50,10 @@ public class RestaurantController {
         restaurant.setName(updatedRestaurant.getName());
         restaurant.setContact(updatedRestaurant.getContact());
         restaurant.setEmail(updatedRestaurant.getEmail());
+        restaurant.setLocationX(updatedRestaurant.getLocationX());
+        restaurant.setLocationY(updatedRestaurant.getLocationY());
+        restaurant.setresAddress(updatedRestaurant.getresAddress());
+        restaurant.setresTiming(updatedRestaurant.getresTiming());
         return restaurantRepository.save(restaurant);
     }
 
@@ -60,7 +64,7 @@ public class RestaurantController {
             .orElseThrow(() -> new ResourceNotFoundException());
         restaurantRepository.delete(restaurant);
     }
-
+    
     @GetMapping("/searchByEmail")
     public Restaurant searchByEmail(@RequestParam(name = "email") String email) {
         return restaurantRepository.findByEmail(email)
@@ -68,23 +72,10 @@ public class RestaurantController {
 
     }
     
+    
 
     
-//    @GetMapping("/searchByName")
-//    public List<Restaurant> searchByName(@RequestParam(name = "name") String name) {
-//        List<Restaurant> result = new ArrayList<>();
-//        
-//        result = restaurantRepository.findByname(name);
-//        
-//        return result;
-//    }
-    
-    
-    
-//    public Restaurant searchByName(Restaurant restaurant) {
-//    	Query query = new Query();
-//    	query.addCriteria
-//       }
+
       
 
     
