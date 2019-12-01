@@ -14,7 +14,15 @@ public class Restaurant {
     private String name;
     
     private String contactInfo;
-   
+    
+    private String locationX;
+    
+    private String locationY;
+    
+    private String resAddress; 
+    
+    private String resTiming; 
+    
     @Indexed(unique = true)
     private String email;
     
@@ -50,5 +58,35 @@ public class Restaurant {
     public void setContact(String contactInfo) {
     	this.contactInfo = contactInfo;
     }
+    
+    public String getLocationX() {
+    	return locationX;
+    }
+    public void setLocationX(String locationX) {
+    	this.locationX = locationX;
+    }
+    public String getLocationY() {
+    	return locationY;
+    }
+    public void setLocationY(String locationY) {
+    	this.locationY = locationY;
+    }
+    
+    public String getresAddress() {
+    	return resAddress;
+    }
+    public void setresAddress(String resAddress) {
+    	this.resAddress = resAddress;
+    }
+   
+    public void setresTiming(String resTiming) {
+    	this.resTiming = resTiming;
+    }
+
+	public String getresTiming() {
+		return resTiming;
+	}
+    
+   
 
 }
