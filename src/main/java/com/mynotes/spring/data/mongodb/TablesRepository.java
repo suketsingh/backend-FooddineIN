@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TablesRepository extends MongoRepository<Tables, String> {
 
-    Optional<Tables> findByEmail(String email);
+    List<Tables> findByEmail(String email);
     //List<User> findByfirstName(String firstName);
 
 

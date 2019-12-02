@@ -65,10 +65,11 @@ public class TablesController {
     }
 
     @GetMapping("/searchByEmail")
-    public Tables searchByEmail(@RequestParam(name = "email") String email) {
-        return tablesRepository.findByEmail(email)
-            .orElseThrow(() -> new ResourceNotFoundException());
-
+    public List<Tables> searchByEmail(@RequestParam(name = "email") String email) {
+    	List<Tables> result = new ArrayList<>();
+    	result = tablesRepository.findByEmail(email);
+   
+      return result;
     }
     
 
