@@ -16,9 +16,11 @@ public class Orders {
     
     private String restaurantName;
     
-    private String tablename;
+    private String tableName;
     
-    private String [] preOrder; 
+    private String [] preorder; 
+    
+    private String userEmail;
     
    
 //    @Indexed(unique = true)
@@ -58,6 +60,14 @@ public class Orders {
         this.email = email;
     }
     
+    public String getuserEmail() {
+        return userEmail;
+    }
+
+    public void setuserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+    
     public String getrestaurantName() {
         return restaurantName;
     }
@@ -67,19 +77,19 @@ public class Orders {
     }
     
     public String getTableName() {
-        return tablename;
+        return tableName;
     }
 
-    public void setTableName(String tablename) {
-        this.tablename = tablename;
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
     
     public String[] getpreorder() {
-        return preOrder;
+        return preorder;
     }
 
-    public void setpreorder(String[] preOrder) {
-        this.preOrder = preOrder;
+    public void setpreorder(String[] preorder) {
+        this.preorder = preorder;
     }
 
 }
