@@ -66,11 +66,12 @@ public class OrdersController {
     }
 
     @GetMapping("/searchByEmail")
-    public Orders searchByEmail(@RequestParam(name = "email") String email) {
-        return ordersRepository.findByEmail(email)
-            .orElseThrow(() -> new ResourceNotFoundException());
-
+    public List<Orders> searchByEmail(@RequestParam(name = "email") String email) {
+    	List<Orders> result = new ArrayList<>();
+    	result = ordersRepository.findByEmail(email);
+    	return result;
     }
+    
     
 
     
