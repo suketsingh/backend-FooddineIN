@@ -50,11 +50,11 @@ public class Orders {
         this.parkingSlot = parkingSlot;
     }
 
-    public String getuserEmail() {
+    public String getemail() {
         return email;
     }
 
-    public void setuserEmail(String email) {
+    public void setemail(String email) {
         this.email = email;
     }
     
@@ -70,7 +70,7 @@ public class Orders {
         return tablename;
     }
 
-    public void seetTableName(String tablename) {
+    public void setTableName(String tablename) {
         this.tablename = tablename;
     }
     

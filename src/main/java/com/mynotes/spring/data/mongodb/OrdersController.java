@@ -51,7 +51,8 @@ public class OrdersController {
         order.setparkingSlot(updatedOrders.getparkingSlot());
         order.setpreorder(updatedOrders.getpreorder());
         order.setrestaurantName(updatedOrders.getrestaurantName());
-        order.setuserEmail(updatedOrders.getuserEmail());
+        order.setemail(updatedOrders.getemail());
+        order.setTableName(updatedOrders.getTableName());
         
         return ordersRepository.save(order);
     }

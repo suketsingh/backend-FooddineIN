@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface OrdersRepository extends MongoRepository<Orders, String> {
 
-    Optional<Orders> findByEmail(String userEmail);
+    Optional<Orders> findByEmail(String email);
     //List<User> findByfirstName(String firstName);
 
 
