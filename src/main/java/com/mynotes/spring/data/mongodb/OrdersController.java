@@ -79,24 +79,7 @@ public class OrdersController {
     	return result;
     }
     
-    
 
-    
-//    @GetMapping("/searchByName")
-//    public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
-//        List<User> result = new ArrayList<>();
-//        
-//        result = userRepository.findByfirstName(firstName);
-//        
-//        return result;
-//    }
-    
-    
-    
-//    public User searchByName(User user) {
-//    	Query query = new Query();
-//    	query.addCriteria
-//       }
       
 
     
