@@ -72,6 +72,13 @@ public class OrdersController {
     	return result;
     }
     
+    @GetMapping("/searchByUserEmail")
+    public List<Orders> searchByUserEmail(@RequestParam(name = "userEmail") String userEmail) {
+    	List<Orders> result = new ArrayList<>();
+    	result = ordersRepository.findByUserEmail(userEmail);
+    	return result;
+    }
+    
     
 
     
