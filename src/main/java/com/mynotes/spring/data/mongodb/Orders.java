@@ -21,7 +21,7 @@ public class Orders {
     private String [] preOrder; 
     
    
-    @Indexed(unique = true)
+//    @Indexed(unique = true)
     private String email;
 
     public String getId() {
