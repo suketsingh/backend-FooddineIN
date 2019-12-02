@@ -19,7 +19,7 @@ public class Tables {
     private String [] datetime; 
     
    
-    @Indexed(unique = true)
+//    @Indexed(unique = true)
     private String email;
 
     public String getId() {
