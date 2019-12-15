@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "restaurant")
 public class Restaurant {
-
+// fields for restaurant api
     @Id
     private String id;
     
@@ -25,7 +25,7 @@ public class Restaurant {
     
     @Indexed(unique = true)
     private String email;
-    
+    // setting the getters and setters for restaurant api 
     public String getId() {
         return id;
     }

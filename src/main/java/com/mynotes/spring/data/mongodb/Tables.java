@@ -3,7 +3,7 @@ package com.mynotes.spring.data.mongodb;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+// setting the values for the tables.
 @Document(collection = "tables")
 public class Tables {
 
@@ -21,7 +21,7 @@ public class Tables {
    
 //    @Indexed(unique = true)
     private String email;
-
+// setting getters and setters for the tables
     public String getId() {
         return id;
     }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RestController
 @RequestMapping("/restaurant/tables")
+//setting the controller class for tables
 public class TablesController {
 
     @Autowired
@@ -31,18 +32,18 @@ public class TablesController {
     public Tables add(@RequestBody Tables table) {
         return tablesRepository.save(table);
     }
-
+    // list all tables
     @GetMapping
     public List<Tables> getAll() {
         return tablesRepository.findAll();
     }
-
+    //list table by id
     @GetMapping(value = "/{id}")
     public Tables getOne(@PathVariable String id) {
         return tablesRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
-
+    //set the value of tables api
     @PutMapping(value = "/{id}")
     public Tables update(@PathVariable String id, @RequestBody Tables updatedTables) {
         Tables table = tablesRepository.findById(id)
@@ -55,7 +56,7 @@ public class TablesController {
         
         return tablesRepository.save(table);
     }
-
+    //delete table with id
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
@@ -63,7 +64,7 @@ public class TablesController {
             .orElseThrow(() -> new ResourceNotFoundException());
         tablesRepository.delete(table);
     }
-
+    // search tables in a restaurant by email
     @GetMapping("/searchByEmail")
     public List<Tables> searchByEmail(@RequestParam(name = "email") String email) {
     	List<Tables> result = new ArrayList<>();
@@ -71,24 +72,7 @@ public class TablesController {
    
       return result;
     }
-    
 
-    
-//    @GetMapping("/searchByName")
-//    public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
-//        List<User> result = new ArrayList<>();
-//        
-//        result = userRepository.findByfirstName(firstName);
-//        
-//        return result;
-//    }
-    
-    
-    
-//    public User searchByName(User user) {
-//    	Query query = new Query();
-//    	query.addCriteria
-//       }
       
 
     

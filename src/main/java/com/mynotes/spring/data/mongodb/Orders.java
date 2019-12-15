@@ -1,3 +1,4 @@
+// this file contains the details for the orders.
 package com.mynotes.spring.data.mongodb;
 
 import org.springframework.data.annotation.Id;
@@ -6,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "orders")
 public class Orders {
-
+// private fields for the order API
     @Id
     private String id;
     
@@ -19,13 +20,13 @@ public class Orders {
     private String tableName;
     
     private String [] preorder; 
-    
+    // for retrieving orders based on user email.
     private String userEmail;
     
    
-//    @Indexed(unique = true)
+    // for retrieving orders based on restaurant email
     private String email;
-
+    // setting getters and setters for the fields.
     public String getId() {
         return id;
     }

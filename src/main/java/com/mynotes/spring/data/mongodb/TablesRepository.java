@@ -6,13 +6,10 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 
-
+// gives the list of available tables in a restaurant
 public interface TablesRepository extends MongoRepository<Tables, String> {
 
     List<Tables> findByEmail(String email);
-    //List<User> findByfirstName(String firstName);
-
-
-    
+  
 
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-
+// the following gives the list of order of users as well as restaurants.
 
 public interface OrdersRepository extends MongoRepository<Orders, String> {
 

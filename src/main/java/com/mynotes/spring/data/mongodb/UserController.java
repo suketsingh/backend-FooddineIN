@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
+// controller class for the user api
 public class UserController {
 
     @Autowired
@@ -32,18 +33,18 @@ public class UserController {
     public User add(@RequestBody User user) {
         return userRepository.save(user);
     }
-
+    // gives a list of all users
     @GetMapping
     public List<User> getAll() {
         return userRepository.findAll();
     }
-
+    // gives one user by id
     @GetMapping(value = "/{id}")
     public User getOne(@PathVariable String id) {
         return userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
-
+    // updates the value of fields of the user api
     @PutMapping(value = "/{id}")
     public User update(@PathVariable String id, @RequestBody User updatedUser) {
         User user = userRepository.findById(id)
@@ -53,7 +54,7 @@ public class UserController {
         user.setEmail(updatedUser.getEmail());
         return userRepository.save(user);
     }
-
+    // used to delete a user
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
@@ -61,7 +62,7 @@ public class UserController {
             .orElseThrow(() -> new ResourceNotFoundException());
         userRepository.delete(user);
     }
-
+    //search a user by email.
     @GetMapping("/searchByEmail")
     public User searchByEmail(@RequestParam(name = "email") String email) {
         return userRepository.findByEmail(email)
@@ -70,7 +71,7 @@ public class UserController {
     }
     
 
-    
+    // search a user by user name
     @GetMapping("/searchByName")
     public List<User> searchByName(@RequestParam(name = "firstName") String firstName) {
         List<User> result = new ArrayList<>();
@@ -82,11 +83,7 @@ public class UserController {
     
     
     
-//    public User searchByName(User user) {
-//    	Query query = new Query();
-//    	query.addCriteria
-//       }
-      
+
 
     
 

@@ -3,11 +3,12 @@ package com.mynotes.spring.data.mongodb;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+// setting all the required fields.
 @Document(collection = "admin")
 public class Admin {
 
     @Id
+   
     private String id;
     
     private String name;
@@ -21,7 +22,7 @@ public class Admin {
     
     @Indexed(unique = true)
     private String email;
-    
+    //setting getters and setters for the fields.
     public String getId() {
         return id;
     }

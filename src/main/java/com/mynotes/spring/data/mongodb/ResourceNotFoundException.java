@@ -1,3 +1,4 @@
+// this is the file for handling exception
 package com.mynotes.spring.data.mongodb;
 
 import org.springframework.http.HttpStatus;

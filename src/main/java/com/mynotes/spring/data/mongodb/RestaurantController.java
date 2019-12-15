@@ -31,18 +31,18 @@ public class RestaurantController {
     public Restaurant add(@RequestBody Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
-
+    // used to retrieve the list of all restaurants
     @GetMapping
     public List<Restaurant> getAll() {
         return restaurantRepository.findAll();
     }
-
+    // retrieves one restaurant by id
     @GetMapping(value = "/{id}")
     public Restaurant getOne(@PathVariable String id) {
         return restaurantRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
-
+    // sets the values submitted by the user into the database
     @PutMapping(value = "/{id}")
     public Restaurant update(@PathVariable String id, @RequestBody Restaurant updatedRestaurant) {
         Restaurant restaurant = restaurantRepository.findById(id)
@@ -56,7 +56,7 @@ public class RestaurantController {
         restaurant.setresTiming(updatedRestaurant.getresTiming());
         return restaurantRepository.save(restaurant);
     }
-
+    // delete a restaurant
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
@@ -64,7 +64,7 @@ public class RestaurantController {
             .orElseThrow(() -> new ResourceNotFoundException());
         restaurantRepository.delete(restaurant);
     }
-    
+    // search a restaurant by email
     @GetMapping("/searchByEmail")
     public Restaurant searchByEmail(@RequestParam(name = "email") String email) {
         return restaurantRepository.findByEmail(email)

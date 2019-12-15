@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 @RestController
 @RequestMapping("/orders")
+//this is the controller class for the orders API
 public class OrdersController {
 
     @Autowired
@@ -31,18 +32,18 @@ public class OrdersController {
     public Orders add(@RequestBody Orders order) {
         return ordersRepository.save(order);
     }
-
+    // retrieve the list of orders
     @GetMapping
     public List<Orders> getAll() {
         return ordersRepository.findAll();
     }
-
+    // retrieve a single order with id
     @GetMapping(value = "/{id}")
     public Orders getOne(@PathVariable String id) {
         return ordersRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException());
     }
-
+    // update the fields of order
     @PutMapping(value = "/{id}")
     public Orders update(@PathVariable String id, @RequestBody Orders updatedOrders) {
         Orders order = ordersRepository.findById(id)
@@ -56,7 +57,7 @@ public class OrdersController {
         
         return ordersRepository.save(order);
     }
-
+    // delete an order
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void delete(@PathVariable String id) {
@@ -64,14 +65,14 @@ public class OrdersController {
             .orElseThrow(() -> new ResourceNotFoundException());
         ordersRepository.delete(order);
     }
-
+    // get all the orders placed in a restaurant by its email.
     @GetMapping("/searchByEmail")
     public List<Orders> searchByEmail(@RequestParam(name = "email") String email) {
     	List<Orders> result = new ArrayList<>();
     	result = ordersRepository.findByEmail(email);
     	return result;
     }
-    
+    // get all the orders placed by a user by user email.
     @GetMapping("/searchByUserEmail")
     public List<Orders> searchByUserEmail(@RequestParam(name = "userEmail") String userEmail) {
     	List<Orders> result = new ArrayList<>();
